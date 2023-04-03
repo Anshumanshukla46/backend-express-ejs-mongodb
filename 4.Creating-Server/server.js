@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 });
 
 
-// now it will listen to the server
+// now it will called when server is started
 server.listen(3000, 'localhost', () => {
     console.log("Listening to 3000 port");
 })
@@ -18,4 +18,3 @@ server.listen(3000, 'localhost', () => {
 // localhost is loopback ip address which point to 127.0.0.1 and points directly point to own computer
 
 // portnumber : door to computer like as a door for study room, entry gate like wise we have different programs inside the server
-
