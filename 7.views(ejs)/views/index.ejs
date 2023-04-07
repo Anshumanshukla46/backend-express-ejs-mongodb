@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs')%>
+
+    <body>
+
+        <!-- dynamic text with = <% %> -->
+        <!-- if defining something then use this <% %> 
+        if using somewhere(equal sign) use and var_name <%=  %>  -->
+
+
+        <% const name='mario' %>
+
+            <!-- including partials by - (dash symbol) -->
+
+            <%- include('./partials/nav.ejs') %>
+
+                <div class="blogs content">
+                    <h2>All Blogs</h2>
+
+                    <!-- if block -->
+
+                    <% if(blogs.length> 0) { %>
+                        <% blogs.forEach(item=>{ %>
+
+                            <h3 class="title">
+                                <%= item.title %>
+                            </h3>
+
+                            <p>
+                                <%= item.snippet %>
+                            </p>
+
+                            <%})%>
+
+                                <%}else {%>
+                                    <p>There is not blog.</p>
+                                    <% } %>
+                </div>
+
+
+                <%- include('./partials/footer.ejs')%>
+    </body>
+
+</html>
