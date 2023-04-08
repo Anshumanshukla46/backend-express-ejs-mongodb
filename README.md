@@ -1,37 +1,32 @@
-As js can run in the browser using v8 engine which is written in cpp 
-but now to add more dynamicity to web we want to run this in server side also which can be done using nodejs which comprises v8 engine and much more than that.
+As  `javasript`  can run in the browser using  `v8 engine`  which is written in **cpp** but now to add more dynamicity to web we want to run this in server side also which can be done using **`nodejs`** which comprises v8 engine and much more than that.
 
-but by this we loose access to some feature like dom model.
+But by this we loose access to some feature like **dom model**.
 
-nodejs  -> javascript
-cpp
-assemnly language
-machine language
+--- 
 
-role of node is simple that we want run js on server side and handle the request in server side.
+## **`Running structure`**
 
-install nodejs then type "node" to use.
+*nodejs -> javascript -> cpp (assembly language) -> machine language*
 
-to run some file do write "node fileName"
+Role of node is that we want run javascript on `server side` and handle the request in server side.
 
+Install `nodejs` then type "`node`" to use.
 
+To run some file do write **`node fileName`**
 
-npm is used package manager to do thing more easily like refeshing with nodemon.
+## npm
+`npm` is used package manager to do thing more easily like `refreshing` with **nodemon**.
 
-
-package.json = npm init (if running/using third party dependenies)
+for package.json = use `npm init` (if running/using third party dependenies)
 
 we can also install the package globally even in the all projects
+by  `npm install -g nodemon` (-g for global use)
 
-like - npm install -g nodemon (-g)
-1. i for install
-2. --save = to add in package.json but now it is deafult 
+1.  can use **i** for **install**
+2.  **--save** used to add in **package.json** but now it is **deafult**
 
+As in the **server.js** of module-5 (above) the code is being a lot messy (not now but if then do use more routing.)
 
+So, **expess** is framework that help to easily manage the request, server-side logic, and responses in much optimum way.
 
-as in the server.js of 5 module 
-the code is being a lot messy (not now but if do use more get/post/routing.)
-
-so for that expess is framework that help to easily manage the request, server-side logic, and responses in much optimum way.
-
-No need to use express it can be done with raw node but it allows clean code and more good features
+There is `No need` to use express it can be done with raw node, but it allows clean code and more good features.
