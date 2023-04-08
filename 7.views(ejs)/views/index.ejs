@@ -23,13 +23,16 @@
                     <% if(blogs.length> 0) { %>
                         <% blogs.forEach(item=>{ %>
 
-                            <h3 class="title">
-                                <%= item.title %>
-                            </h3>
+                            <!-- :id (dynamic variable) -->
+                            <a class="single" href="/blogs/<%= item._id %>">
+                                <h3 class="title">
+                                    <%= item.title %>
+                                </h3>
 
-                            <p>
-                                <%= item.snippet %>
-                            </p>
+                                <p>
+                                    <%= item.snippet %>
+                                </p>
+                            </a>
 
                             <%})%>
 

@@ -1,0 +1,48 @@
+<html lang="en">
+<%- include('./partials/head.ejs')%>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+
+            <div class="details content">
+                <h2>
+                    <%= blog.title %>
+                </h2>
+
+                <div class="content">
+                    <p>
+                        <%= blog.body %>
+                    </p>
+                </div>
+
+                <!-- data-doc is html custom attribute with doc attached to some_id -->
+                <a class="delete" id="del" data-doc="<%= blog._id %>">Delete</a>
+            </div>
+
+            <%- include("./partials/footer.ejs") %>
+
+
+                <!-- deleting element using vanila javascript -->
+
+                <script>
+                    const trashcan = document.getElementById('del');
+
+                    trashcan.addEventListener('click', (e) => {
+                        const endpoint = `/blogs/${trashcan.dataset.doc}`;
+
+                        // simple ajax request
+                        fetch(endpoint, {
+                            // now this method will be handled in server side
+                            method: 'DELETE'
+                        })
+                            .then((response) => response.json())
+                            .then((data) => window.location.href = data.redirect)
+                            .catch(err => console.log(err))
+
+                    });
+
+                </script>
+
+    </body>
+
+</html>
