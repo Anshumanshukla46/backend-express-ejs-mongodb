@@ -76,3 +76,6 @@ views - presenting the data like html, css, scripts
 
 controller - MODEL -> "CONTROLLER" -> VIEW
 layered between models and view. responsible for handling user-input, updating view, https requests
+
+create folder of controller
+add all (req,res) in it
