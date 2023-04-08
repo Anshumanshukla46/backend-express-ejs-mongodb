@@ -12,7 +12,7 @@ const blogRoutes = require('./routes/blogRoutes')
 const app = express();
 
 // collection name after .net/HERE
-const dbURI = "mongodb+srv://anshumanshukla46:mongodb01@node-learning.mevqjra.mongodb.net/node-tutorial?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://user:password@node-learning.mevqjra.mongodb.net/cluter_project?retryWrites=true&w=majority";
 
 // if deprication_warning then add useNewUrlParse:true, useUnifiedTopology:true
 // IT RETURN PROMISE so use then 
