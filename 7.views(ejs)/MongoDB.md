@@ -15,6 +15,11 @@ const dbURI = "mongodb+srv://anshumanshukla46:mongodb01@node-learning.mevqjra.mo
 // THIS WILL BE PASSED TO MONGOOSE
 
 
+// NOW FOR RUNNING THIS WHOLE APP 
+nodemon app.js (terminal)
+http://localhost:3000 (browser)
+open mongodb-atlas (for same ip address)
+
 after that we could connect app to it just by mongodb API but it will get complex
 so we will use mongoose to interact with database
 
@@ -32,7 +37,7 @@ age(num),
 bio (string) required
 
 
-to use mongoose, install it as it is just a third party package for easyness (which is not important to use as we could use mongodb api fo this tooo but it become too clunky and verbose)
+To use mongoose, install it as it is just a third party package for easyness (which is not important to use as we could use mongodb api fo this tooo but it become too clunky and verbose)
 
 
 Get -> request for data from database
@@ -47,3 +52,27 @@ http://localhost:3000/blogs/:id -> delete
 put -> update some data in database
 http://localhost:3000/blogs/:id -> put
 HERE :ID is a varible now we have to use router-params to handle this
+
+
+Till now we have done the whole full stack web app as Blog Post app.
+
+But wait if we could check our app.js it is quite messy 
+to fix this we could use express-router.
+
+express router provides a way to organize your server-side code by grouping related routes together and separating them from the main application logic.
+and a certain route can be made while building a new feature.
+
+now as app.js is now big file -> make new file routes and 
+add routes.js like file to it which are mostly common in the project.
+
+---> NOW WE ARE GOING TO FOLLOW MVC APPROACH
+1. it stand for Model, View, Controller
+2. it is just a way of structuring our code
+3. it keeps code modular, reusable and easier to read.
+
+model- consist of data, logic, validation, processing
+
+views - presenting the data like html, css, scripts
+
+controller - MODEL -> "CONTROLLER" -> VIEW
+layered between models and view. responsible for handling user-input, updating view, https requests

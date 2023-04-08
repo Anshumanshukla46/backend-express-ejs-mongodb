@@ -5,7 +5,8 @@ const morgan = require('morgan');// middleware
 
 const mongoose = require('mongoose');
 const Blog = require('./models/blogs'); // importing model from folder
-const { render } = require('ejs');
+const blogRoutes = require('./routes/blogRoutes')
+
 
 
 const app = express();
@@ -116,72 +117,8 @@ app.get('/about', (req, res) => {
 // "mongodb"
 // blog-routes-database (now showing data in website with front end iteself)
 
-// "http://localhost:3000/blogs" <- it is the link
-// now going on blogs -> index.ejs will be shown
-
-// GET request
-app.get('/blogs', (req, res) => {
-
-    // sort like feature are given mongoose to sort the data in decreasing order as -1
-
-    Blog.find().sort({ createdAt: -1 })
-        .then((result) => {
-            res.render('index', { title: 'All Blogs', blogs: result })
-        })
-        .then((err) => {
-            console.log(err);
-        })
-
-})
-
-
-// POST request (will be using urlencoded middleware converting summited data to object form)
-app.post('/blogs', (req, res) => {
-    // console.log(req.body); // all data at "req.body"
-
-    const blog = new Blog(req.body);
-    blog.save()
-        .then((result) => {
-            res.redirect('/blogs')
-        })
-        .catch((err) => console.log(err))
-})
-
-
-// getting id 
-app.get('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findById(id)
-        .then(result => {
-            res.render('details', { blog: result, title: 'Blog Details' })
-        })
-        .catch(err => console.log(err))
-})
-
-// delete request
-app.delete('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-
-    Blog.findByIdAndDelete(id)
-        .then(result => {
-            // as we can't redirect it because in frontend we used AJAX.
-            // so now we will pass the url to which we have redirect
-            res.json({ redirect: '/blogs' })
-        })
-        .catch(err => console.log(err))
-})
-
-
-
-
-{ /* <a href="/blogs/create">New Blog</a> 
-// on clicking NewBlog this create.ejs will be fetched i.e., no need to create blogs/create  */ }
-
-// http://localhost:3000/blogs/create
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: "Creating Blog" })
-})
-
+// app.use(blogRoutes);
+app.use('/blogs', blogRoutes); // now on "/blogs" blogRoutes will be applied so in "blogRoutes" use only use "/:id" not "/blogs/:id" as blogs is now replaced
 
 
 // using middleware using "app.use((),{})" for 404
