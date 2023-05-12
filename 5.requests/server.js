@@ -11,21 +11,23 @@ const server = http.createServer((req, res) => {
 
 
 
-    // REQ
+    // "REQ"
     // req.url - to show the url 
     // req.method - to show the method like get/post
-    // console.log(req.url, req.method);
+    // console.log(req.url, req.get);
 
 
-    // RES
-    // 1. set header content type
+    // "RES"
+    // 1. set header content type like what to show txt file or html
     // 2. what content to send
     // 3. ending the response
     // res.setHeader('Content-Type', 'text/plain');
 
-    res.setHeader('Content-Type', 'text/html')
 
-    // res.write('hello world');
+
+    res.setHeader('Content-Type', 'text/html') // setting header
+
+    // res.write('hello world'); // sending content
     // res.write("<h1>Hello <h1/>"); // html
 
     // sending file with writing module (fs)
@@ -39,6 +41,7 @@ const server = http.createServer((req, res) => {
     // })
 
 
+    // QUITE GOOD TO SEPARATE HTML and JS FILE AS HERE "Views" DO HAVE "HTML"
 
     // getting path to send user to differnt pages
     let path = './Views/';
@@ -49,10 +52,12 @@ const server = http.createServer((req, res) => {
             res.statusCode = 200;
             break;
 
+
         case '/about':
             path += 'About.html';
             res.statusCode = 200;
             break;
+
 
         case '/about-me':
             // redirecting the page to other

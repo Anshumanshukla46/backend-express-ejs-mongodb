@@ -11,7 +11,7 @@ app.set('view engine', 'ejs'); // now we could add our template in "views" folde
 
 
 app.listen(3000);
-// this exress take care of setheaderfile, status code
+// now express take care of setheaderfile, status code and sendFiles
 
 // routing
 app.get('/', (req, res) => {

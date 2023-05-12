@@ -4,18 +4,22 @@ const express = require('express');
 const morgan = require('morgan');// middleware
 
 const mongoose = require('mongoose');
-const Blog = require('./models/blogs'); // importing model from folder
+const Blog = require('./models/blogs'); // importing models from folder
 const blogRoutes = require('./routes/blogRoutes')
 
 
 
 const app = express();
 
-// collection name after .net/HERE
+
+// ADD collection_name after .net/HERE
 const dbURI = "mongodb+srv://user:password@node-learning.mevqjra.mongodb.net/cluter_project?retryWrites=true&w=majority";
 
+
+// middleware
 // if deprication_warning then add useNewUrlParse:true, useUnifiedTopology:true
-// IT RETURN PROMISE so use then 
+
+// IT RETURNING PROMISE use "then" 
 mongoose.connect(dbURI)
     .then((result) => app.listen(3000)) // listen when page completely load
     .catch((err) => console.log(err))
@@ -51,6 +55,7 @@ app.set('view engine', 'ejs'); // template engine declaration
 //             res.send(result)
 //         })
 //         .catch((error) => { console.log(error); })
+
 // })
 
 
@@ -83,22 +88,31 @@ app.set('view engine', 'ejs'); // template engine declaration
 
 
 
-// middleware using used using ".use()" 
+// middleware using ".use()" method
 app.use((req, res, next) => {
     console.log('NEW request made');
     console.log('host : ', req.hostname);
+
     next();  // to exit from middleware and move to other statements
 })
 
-// third party middleware are also available
-// "morgan middleware" for logging
-// for session, cookies, authentication there are middlewares for that too
 
-app.use(morgan('dev')); // how to show the data
+
+// third party middleware are also available
+// "morgan middleware" for logging, logging means CONSOLE.LOG("KIND OF")
+
+// and even for session, cookies, authentication middlewares are also available
+
+app.use(morgan('dev')); // how to show the data designated by "dev" in console.log
+// "tiny" is the default value of "dev"
+// "dev" is the default value of "morgan"
+// "tiny" is the default value of "morgan"
+// "combined" is the default value of "morgan"
+
 app.use(morgan('tiny'));
 
 
-// middleware for static file like css can also used in page otherwise in server side css file is unknown
+// middleware for static file like "css" can also used in page otherwise in server side css file will be is unknown for server
 app.use(express.static('public')) // now all the files in public folder will be accessible to browser for rendering
 app.use(express.urlencoded({ extended: true }))
 
@@ -115,7 +129,7 @@ app.get('/about', (req, res) => {
 
 
 // "mongodb"
-// blog-routes-database (now showing data in website with front end iteself)
+// blog-routes-database (now showing data in website with front-end itself)
 
 // app.use(blogRoutes);
 app.use('/blogs', blogRoutes); // now on "/blogs" blogRoutes will be applied so in "blogRoutes" use only use "/:id" not "/blogs/:id" as blogs is now replaced

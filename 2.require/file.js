@@ -5,3 +5,5 @@ module.exports = {
     people: ppl,
     ages
 }; // now this will be passed to other files
+
+// ages : ages then shortcut is ages
